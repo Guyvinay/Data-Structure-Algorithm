@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-import javax.print.DocFlavor.STRING;
-
 public class PushPopTop {
     public void pushPopTop(List<List<String>> list){
         Stack<String> stk = new Stack<>();
