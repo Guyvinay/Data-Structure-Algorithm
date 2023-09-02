@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class ReducedString {
 
-    public static String reduceString(String str){
+    public String reduceString(String str){
         Stack<Character> stk = new Stack<>();
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<str.length(); i++){
