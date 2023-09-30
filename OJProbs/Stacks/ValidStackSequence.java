@@ -1,4 +1,4 @@
-package Stacks;
+package OJProbs.Stacks;
 
 import java.util.Stack;
 
