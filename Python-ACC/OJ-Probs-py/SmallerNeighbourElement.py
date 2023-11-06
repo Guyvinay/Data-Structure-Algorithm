@@ -10,4 +10,4 @@ def smallerNeighbour(arr) :
     return ans
 test = int(input())
 arr = list(map(int,input().split()))
-print(smallerNeighbour(arr))     
+print(" ".join(map(str,smallerNeighbour(arr))))     
