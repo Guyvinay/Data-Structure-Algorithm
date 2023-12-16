@@ -1,16 +1,17 @@
+package OJProbs.BinarySearch;
 
 import java.util.*;
-class Main{
+public class SquareRoot{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int test = sc.nextInt();
         for(int i=0; i<test; i++){
-            int ans = squareRoot(sc.nextInt());
+            int ans = squareR(sc.nextInt());
             System.out.println(ans);
         }
         sc.close();
     }
-    public static int squareRoot(int num){
+    public static int squareR(int num){
         if (num == 0 || num == 1) {
             return num;
         }
