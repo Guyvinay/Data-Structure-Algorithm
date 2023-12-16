@@ -8,6 +8,7 @@ class Main{
             int ans = squareRoot(sc.nextInt());
             System.out.println(ans);
         }
+        sc.close();
     }
     public static int squareRoot(int num){
         if (num == 0 || num == 1) {
