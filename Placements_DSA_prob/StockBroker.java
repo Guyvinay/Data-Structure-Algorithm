@@ -14,6 +14,7 @@ public class StockBroker{
             int ans = stockBroker(num,arr);
             System.out.println(ans);
         }
+        sc.close();
     }
     public static int stockBroker(int n, int[]arr){
         int curr = arr[0];

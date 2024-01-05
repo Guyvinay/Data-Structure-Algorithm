@@ -17,6 +17,7 @@ class Main {
             int ans = adamsAndSums(n, arr);
             System.out.println(ans);
         }
+        sc.close();
     }
 
     public static int adamsAndSums(int n, int[] arr) {
