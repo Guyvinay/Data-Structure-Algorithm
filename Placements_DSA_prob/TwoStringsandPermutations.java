@@ -12,5 +12,6 @@ public class TwoStringsandPermutations {
         String s1 = new String(arr1);
         String s2 = new String(arr2);
         System.out.println(s1.equals(s2)?"Yes":"No");
+        sc.close();
     }
 }
