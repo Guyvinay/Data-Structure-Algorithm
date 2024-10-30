@@ -8,12 +8,13 @@ import java.util.Scanner;
 public class NumberOfWays {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int num = scanner.nextInt();
-        int ans = numberOfWays(num);
-        List<Integer> list =  new ArrayList<>();
-        numberOfWaysV2(num, list);
-        System.out.println(ans);
+        try (Scanner scanner = new Scanner(System.in)) {
+            int num = scanner.nextInt();
+            int ans = numberOfWays(num);
+            List<Integer> list =  new ArrayList<>();
+            numberOfWaysV2(num, list);
+            System.out.println(ans);
+        }
     }
 
     public static int numberOfWays(int n) {
