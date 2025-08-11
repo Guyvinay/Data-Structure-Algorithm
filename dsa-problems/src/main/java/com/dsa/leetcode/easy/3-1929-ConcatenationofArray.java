@@ -1,7 +1,6 @@
 package com.dsa.leetcode.easy;
 
-
-class Solution {
+class Solution2 {
     public int[] getConcatenation(int[] nums) {
         // int[] arr = new int[2*nums.length];
         // int j=0;

@@ -1,6 +1,6 @@
 package com.dsa.leetcode.easy;
 
-class Solution {
+class Solution1 {
     public boolean isAnagram(String s, String t) {
         char[] arr1 = s.toCharArray();
         char[] arr2 = s.toCharArray();

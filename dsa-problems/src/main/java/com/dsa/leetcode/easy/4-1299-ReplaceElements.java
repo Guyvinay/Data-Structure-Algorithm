@@ -1,7 +1,7 @@
 package com.dsa.leetcode.easy;
 
 
-class Solution {
+class Solution3{
     public int[] replaceElements(int[] arr) {
         
         int val = -1;

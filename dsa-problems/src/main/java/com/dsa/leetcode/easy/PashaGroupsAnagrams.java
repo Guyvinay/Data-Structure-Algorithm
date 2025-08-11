@@ -1,7 +1,6 @@
 package com.dsa.leetcode.easy;
-
-
 import java.util.*;
+
 class Main{
     public static void main(String[] str){
         Scanner sc = new Scanner(System.in);
