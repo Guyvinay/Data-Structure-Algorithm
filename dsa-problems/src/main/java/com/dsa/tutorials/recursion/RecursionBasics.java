@@ -1,5 +1,7 @@
 package com.dsa.tutorials.recursion;
 
+import java.util.Arrays;
+
 public class RecursionBasics {
 
     public static void func() {
@@ -87,14 +89,73 @@ public class RecursionBasics {
         return num * factorialFunctional(num - 1);
     }
 
+    // Rec - 4
+
+    public static void reverseArray(int[] arr, int l, int r) {
+
+        if(l >= r) {
+            System.out.println(Arrays.toString(arr));
+            return;
+        }
+
+        int temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+
+        reverseArray(arr, l+1, r-1);
+    }
+
+    public static void reverseArrayWithSingleVariable(int[] arr, int l) {
+        int r = arr.length - l -1;
+        if(l >= r) {
+            System.out.println(Arrays.toString(arr));
+            return;
+        }
+
+        int temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+
+        reverseArrayWithSingleVariable(arr, l+1);
+    }
+
+    public static boolean isPalindrome(int n, String str) {
+        int r = str.length() - n - 1;
+        char left = str.charAt(n);
+        char right = str.charAt(r);
+
+        if(n >= r) return true;
+
+        if(left != right) return false;
+
+        return isPalindrome(n + 1, str);
+    }
+
+    // Rec - 5
+
+    public static int fibbonachiSequence(int n) {
+
+        if(n <= 1) return n;
+
+        return fibbonachiSequence(n - 1) + fibbonachiSequence(n - 2);
+    }
+
+
+
+
     public static void main(String[] args) {
-//        printOneToN(1, 5);
-//        printNToOne(5, 5);
-//        printOneToNBack(5, 5);
-//        printSumOfNParameterized(10, 0);
-//        System.out.println(printSumOfNFunctional(5));
-//        factorialParametrized(5, 1);
+        System.out.println(fibbonachiSequence(10));
+//        System.out.println(isPalindrome(0,"MADAM"));
+//        int[] arr = {1, 2, 3, 4, 5 , 6};
+//        reverseArrayWithSingleVariable(arr, 0);
+//        reverseArray(arr, 0, arr.length - 1);
 //        System.out.println(factorialFunctional(5));
+//        factorialParametrized(5, 1);
+//        System.out.println(printSumOfNFunctional(5));
+//        printSumOfNParameterized(10, 0);
+//        printOneToNBack(5, 5);
+//        printNToOne(5, 5);
+//        printOneToN(1, 5);
     }
 
 
