@@ -1,6 +1,11 @@
 package com.dsa.tutorials.recursion;
 
+import org.w3c.dom.stylesheets.LinkStyle;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class RecursionBasics {
 
@@ -140,11 +145,87 @@ public class RecursionBasics {
         return fibbonachiSequence(n - 1) + fibbonachiSequence(n - 2);
     }
 
+    private static void generateSubSequences(int i, int[] arr, List<Integer> list) {
+        if(i>=arr.length) {
+            System.out.println(list);
+            return;
+        }
+        list.add(arr[i]);
+        generateSubSequences(i+1, arr, list);
 
+        list.remove(list.size() - 1);
+        generateSubSequences(i+1, arr, list);
+    }
 
+    private static void generateSubSequencesOfSumK(int i, int[] arr, List<Integer> list, int sum, int k) {
+        if(i >= arr.length) {
+            if(sum == k) System.out.println(list);
+            return;
+        }
 
+        list.add(arr[i]);
+        sum += arr[i];
+
+        generateSubSequencesOfSumK(i+1, arr, list, sum, k);
+
+        list.remove(list.size() - 1);
+        sum-=arr[i];
+
+        generateSubSequencesOfSumK(i+1, arr, list, sum, k);
+
+    }
+
+    private static boolean generateSubSequencesOfSumKOnlyFirst(int i, int[] arr, List<Integer> list, int sum, int k) {
+        if(i >= arr.length) {
+            if(sum == k) {
+                System.out.println(list);
+                return true;
+            }
+            return false;
+        }
+
+        list.add(arr[i]);
+        sum += arr[i];
+
+        if(generateSubSequencesOfSumKOnlyFirst(i+1, arr, list, sum, k)) return true;
+
+        list.remove(list.size() - 1);
+        sum-=arr[i];
+
+        if(generateSubSequencesOfSumKOnlyFirst(i+1, arr, list, sum, k)) return true;
+
+        return false;
+
+    }
+
+    private static int generateSubSequencesOfSumKReturnCountOnly(int i, int[] arr, int sum, int k) {
+        if(i >= arr.length) {
+            if(sum == k) {
+//                System.out.println(list);
+                return 1;
+            };
+            return 0;
+        }
+
+        sum += arr[i];
+
+        int l = generateSubSequencesOfSumKReturnCountOnly(i+1, arr, sum, k);
+
+        sum-=arr[i];
+
+        int r = generateSubSequencesOfSumKReturnCountOnly(i+1, arr, sum, k);
+
+        return l+ r;
+
+    }
     public static void main(String[] args) {
-        System.out.println(fibbonachiSequence(10));
+        int[] arr = {1, 2, 1};
+        System.out.println(generateSubSequencesOfSumKReturnCountOnly(0, arr, 0, 2));
+//        generateSubSequencesOfSumKOnlyFirst(0, arr, new ArrayList<>(), 0, 2);
+//        generateSubSequencesOfSumK(0, arr, new ArrayList<>(), 0, 2);
+//        generateSubSequences(0, arr, new ArrayList<>());
+//        System.out.println(fibbonachiSequence(10));
+
 //        System.out.println(isPalindrome(0,"MADAM"));
 //        int[] arr = {1, 2, 3, 4, 5 , 6};
 //        reverseArrayWithSingleVariable(arr, 0);
