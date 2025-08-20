@@ -218,9 +218,22 @@ public class RecursionBasics {
         return l+ r;
 
     }
+
+    private static void stringSubsequences(int i, String str, String current) {
+        if(i >= str.length()) {
+            System.out.println(current);
+            return;
+        }
+        stringSubsequences(i+1, str, current + str.charAt(i));
+        stringSubsequences(i+1, str, current );
+    }
+
+
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 1};
-        System.out.println(generateSubSequencesOfSumKReturnCountOnly(0, arr, 0, 2));
+        stringSubsequences(0, "Vin", "");
+//        System.out.println(generateSubSequencesOfSumKReturnCountOnly(0, arr, 0, 2));
 //        generateSubSequencesOfSumKOnlyFirst(0, arr, new ArrayList<>(), 0, 2);
 //        generateSubSequencesOfSumK(0, arr, new ArrayList<>(), 0, 2);
 //        generateSubSequences(0, arr, new ArrayList<>());
