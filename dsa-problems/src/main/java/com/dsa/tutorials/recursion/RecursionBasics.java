@@ -237,10 +237,31 @@ public class RecursionBasics {
         stringSubsequences(i+1, str, current );
     }
 
-    public static void main(String[] args) {
+    public static void combinationSum(int index, int target, List<Integer> ds, int[] arr, List<List<Integer>> answer) {
+        if(index>=arr.length) {
+            if(target == 0) {
+                answer.add(new ArrayList<>(ds));
+            }
+            return;
+        }
+        if(arr[index] <= target) {
+            ds.add(arr[index]);
+            combinationSum(index, target - arr[index], ds, arr, answer);
+            ds.remove(ds.size() - 1);
+        }
+        index++;
+        combinationSum(index, target, ds, arr, answer);
+    }
 
+    public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        int[] arr = {1, 2, 1};
+        int[] arr = {2, 3, 6, 7};
+        List<List<Integer>> answer = new ArrayList<>();
+
+        combinationSum(0, 7, new ArrayList<>(), arr, answer);
+        System.out.println(answer);
+
+
 //        stringSubsequences(0, "Vinay", "");
 //        System.out.println(generateSubSequencesOfSumKReturnCountOnly(0, arr, 0, 2));
 //        generateSubSequencesOfSumKOnlyFirst(0, arr, new ArrayList<>(), 0, 2);
