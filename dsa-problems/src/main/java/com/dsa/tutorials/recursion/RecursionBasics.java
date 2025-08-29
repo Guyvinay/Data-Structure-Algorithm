@@ -5,14 +5,16 @@ import org.w3c.dom.stylesheets.LinkStyle;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RecursionBasics {
 
-    public static void func() {
-        System.out.println("func called");
-        func();
-    }
+//    public static void func() {
+//        System.out.println("func called");
+//        func();
+//    }
     // Re 1
     /**
      *
@@ -137,12 +139,19 @@ public class RecursionBasics {
     }
 
     // Rec - 5
-
-    public static int fibbonachiSequence(int n) {
+    public static int fibonacciSequence(int n) {
 
         if(n <= 1) return n;
 
-        return fibbonachiSequence(n - 1) + fibbonachiSequence(n - 2);
+        return fibonacciSequence(n - 1) + fibonacciSequence(n - 2);
+    }
+
+    public static int fibonacciWithMemorization(int n, Map<Integer, Integer> map) {
+        if(n <= 1) return n;
+        if(map.containsKey(n)) return map.get(n);
+        int result = fibonacciWithMemorization(n - 1, map) + fibonacciWithMemorization(n - 2, map);
+        map.put(n, result);
+        return result;
     }
 
     private static void generateSubSequences(int i, int[] arr, List<Integer> list) {
@@ -228,16 +237,17 @@ public class RecursionBasics {
         stringSubsequences(i+1, str, current );
     }
 
-
-
     public static void main(String[] args) {
+
+        long startTime = System.currentTimeMillis();
         int[] arr = {1, 2, 1};
-        stringSubsequences(0, "Vin", "");
+//        stringSubsequences(0, "Vinay", "");
 //        System.out.println(generateSubSequencesOfSumKReturnCountOnly(0, arr, 0, 2));
 //        generateSubSequencesOfSumKOnlyFirst(0, arr, new ArrayList<>(), 0, 2);
 //        generateSubSequencesOfSumK(0, arr, new ArrayList<>(), 0, 2);
 //        generateSubSequences(0, arr, new ArrayList<>());
-//        System.out.println(fibbonachiSequence(10));
+//        System.out.println(fibonacciSequence(40));
+//        System.out.println(fibonacciWithMemorization(40, new HashMap<>()));
 
 //        System.out.println(isPalindrome(0,"MADAM"));
 //        int[] arr = {1, 2, 3, 4, 5 , 6};
@@ -250,6 +260,9 @@ public class RecursionBasics {
 //        printOneToNBack(5, 5);
 //        printNToOne(5, 5);
 //        printOneToN(1, 5);
+
+        long stopTime = System.currentTimeMillis();
+        System.out.println("Executed in :" +  (stopTime - startTime) + " ms");
     }
 
 
