@@ -16,41 +16,41 @@ public class RecursionBasics {
 //        func();
 //    }
     // Re 1
+
     /**
      *
      * Recursion: Recursion is when a function calls itself directly or indirectly until it reaches a stopping condition (base case).
      * Stack Space / Stack Overflow: Every recursive call is stored in the call stack (a memory structure that keeps track of function calls).
      * In recursion, each call waits for the next call to finish before popping.
-
+     * <p>
      * Call Stack / Stack Overflow
-     *
+     * <p>
      * Recursion Tree
-     factorial(3)
-     = 3 * factorial(2)
-     = 3 * (2 * factorial(1))
-     = 3 * (2 * (1))
-     = 6
-
-     | factorial(1) |
-     | factorial(2) |
-     | factorial(3) |   <-- top of stack
+     * factorial(3)
+     * = 3 * factorial(2)
+     * = 3 * (2 * factorial(1))
+     * = 3 * (2 * (1))
+     * = 6
+     * <p>
+     * | factorial(1) |
+     * | factorial(2) |
+     * | factorial(3) |   <-- top of stack
      */
     // Re 1
-
     public static void printOneToN(int start, int end) {
-        if(start == end) return;
+        if (start == end) return;
         System.out.println("start " + start + ", end: " + end);
-        printOneToN(start+1, end);
+        printOneToN(start + 1, end);
     }
 
     public static void printNToOne(int n, int m) {
-        if(n < 1) return;
+        if (n < 1) return;
         System.out.println("n " + n + ", m: " + m);
         printNToOne(n - 1, m);
     }
 
     public static void printOneToNBack(int n, int m) {
-        if(n < 1) return;
+        if (n < 1) return;
         printOneToNBack(n - 1, m);
         System.out.println("n " + n + ", m: " + m);
     }
@@ -58,31 +58,30 @@ public class RecursionBasics {
     // Re-3
 
     /**
-
-     Parameterized recursion: Passing parameters along the recursive call to carry results.
-            Instead of returning results, we pass them as arguments.
-     Functional Recursion:Function returns the result instead of passing as a parameter.
-            Each call computes and returns to the previous one.
+     * Parameterized recursion: Passing parameters along the recursive call to carry results.
+     * Instead of returning results, we pass them as arguments.
+     * Functional Recursion:Function returns the result instead of passing as a parameter.
+     * Each call computes and returns to the previous one.
      */
 
     public static void printSumOfNParameterized(int n, int sum) {
 
-        if(n<=0) {
+        if (n <= 0) {
             System.out.println("sum: " + sum);
             return;
         }
-        printSumOfNParameterized(n-1, sum + n);
+        printSumOfNParameterized(n - 1, sum + n);
     }
 
     public static int printSumOfNFunctional(int n) {
-        if(n<=1) {
+        if (n <= 1) {
             return 1;
         }
-        return n + printSumOfNFunctional(n-1);
+        return n + printSumOfNFunctional(n - 1);
     }
 
     public static void factorialParametrized(int num, int fact) {
-        if(num == 0) {
+        if (num == 0) {
             System.out.println(fact);
             return;
         }
@@ -90,7 +89,7 @@ public class RecursionBasics {
     }
 
     public static int factorialFunctional(int num) {
-        if(num == 1) {
+        if (num == 1) {
             return 1;
         }
         return num * factorialFunctional(num - 1);
@@ -100,7 +99,7 @@ public class RecursionBasics {
 
     public static void reverseArray(int[] arr, int l, int r) {
 
-        if(l >= r) {
+        if (l >= r) {
             System.out.println(Arrays.toString(arr));
             return;
         }
@@ -109,12 +108,12 @@ public class RecursionBasics {
         arr[l] = arr[r];
         arr[r] = temp;
 
-        reverseArray(arr, l+1, r-1);
+        reverseArray(arr, l + 1, r - 1);
     }
 
     public static void reverseArrayWithSingleVariable(int[] arr, int l) {
-        int r = arr.length - l -1;
-        if(l >= r) {
+        int r = arr.length - l - 1;
+        if (l >= r) {
             System.out.println(Arrays.toString(arr));
             return;
         }
@@ -123,7 +122,7 @@ public class RecursionBasics {
         arr[l] = arr[r];
         arr[r] = temp;
 
-        reverseArrayWithSingleVariable(arr, l+1);
+        reverseArrayWithSingleVariable(arr, l + 1);
     }
 
     public static boolean isPalindrome(int n, String str) {
@@ -131,9 +130,9 @@ public class RecursionBasics {
         char left = str.charAt(n);
         char right = str.charAt(r);
 
-        if(n >= r) return true;
+        if (n >= r) return true;
 
-        if(left != right) return false;
+        if (left != right) return false;
 
         return isPalindrome(n + 1, str);
     }
@@ -141,52 +140,52 @@ public class RecursionBasics {
     // Rec - 5
     public static int fibonacciSequence(int n) {
 
-        if(n <= 1) return n;
+        if (n <= 1) return n;
 
         return fibonacciSequence(n - 1) + fibonacciSequence(n - 2);
     }
 
     public static int fibonacciWithMemorization(int n, Map<Integer, Integer> map) {
-        if(n <= 1) return n;
-        if(map.containsKey(n)) return map.get(n);
+        if (n <= 1) return n;
+        if (map.containsKey(n)) return map.get(n);
         int result = fibonacciWithMemorization(n - 1, map) + fibonacciWithMemorization(n - 2, map);
         map.put(n, result);
         return result;
     }
 
     private static void generateSubSequences(int i, int[] arr, List<Integer> list) {
-        if(i>=arr.length) {
+        if (i >= arr.length) {
             System.out.println(list);
             return;
         }
         list.add(arr[i]);
-        generateSubSequences(i+1, arr, list);
+        generateSubSequences(i + 1, arr, list);
 
         list.remove(list.size() - 1);
-        generateSubSequences(i+1, arr, list);
+        generateSubSequences(i + 1, arr, list);
     }
 
     private static void generateSubSequencesOfSumK(int i, int[] arr, List<Integer> list, int sum, int k) {
-        if(i >= arr.length) {
-            if(sum == k) System.out.println(list);
+        if (i >= arr.length) {
+            if (sum == k) System.out.println(list);
             return;
         }
 
         list.add(arr[i]);
         sum += arr[i];
 
-        generateSubSequencesOfSumK(i+1, arr, list, sum, k);
+        generateSubSequencesOfSumK(i + 1, arr, list, sum, k);
 
         list.remove(list.size() - 1);
-        sum-=arr[i];
+        sum -= arr[i];
 
-        generateSubSequencesOfSumK(i+1, arr, list, sum, k);
+        generateSubSequencesOfSumK(i + 1, arr, list, sum, k);
 
     }
 
     private static boolean generateSubSequencesOfSumKOnlyFirst(int i, int[] arr, List<Integer> list, int sum, int k) {
-        if(i >= arr.length) {
-            if(sum == k) {
+        if (i >= arr.length) {
+            if (sum == k) {
                 System.out.println(list);
                 return true;
             }
@@ -196,55 +195,56 @@ public class RecursionBasics {
         list.add(arr[i]);
         sum += arr[i];
 
-        if(generateSubSequencesOfSumKOnlyFirst(i+1, arr, list, sum, k)) return true;
+        if (generateSubSequencesOfSumKOnlyFirst(i + 1, arr, list, sum, k)) return true;
 
         list.remove(list.size() - 1);
-        sum-=arr[i];
+        sum -= arr[i];
 
-        if(generateSubSequencesOfSumKOnlyFirst(i+1, arr, list, sum, k)) return true;
+        if (generateSubSequencesOfSumKOnlyFirst(i + 1, arr, list, sum, k)) return true;
 
         return false;
 
     }
 
     private static int generateSubSequencesOfSumKReturnCountOnly(int i, int[] arr, int sum, int k) {
-        if(i >= arr.length) {
-            if(sum == k) {
+        if (i >= arr.length) {
+            if (sum == k) {
 //                System.out.println(list);
                 return 1;
-            };
+            }
+            ;
             return 0;
         }
 
         sum += arr[i];
 
-        int l = generateSubSequencesOfSumKReturnCountOnly(i+1, arr, sum, k);
+        int l = generateSubSequencesOfSumKReturnCountOnly(i + 1, arr, sum, k);
 
-        sum-=arr[i];
+        sum -= arr[i];
 
-        int r = generateSubSequencesOfSumKReturnCountOnly(i+1, arr, sum, k);
+        int r = generateSubSequencesOfSumKReturnCountOnly(i + 1, arr, sum, k);
 
-        return l+ r;
+        return l + r;
 
     }
 
     private static void stringSubsequences(int i, String str, String current) {
-        if(i >= str.length()) {
+        if (i >= str.length()) {
             System.out.println(current);
             return;
         }
-        stringSubsequences(i+1, str, current + str.charAt(i));
-        stringSubsequences(i+1, str, current );
+        stringSubsequences(i + 1, str, current + str.charAt(i));
+        stringSubsequences(i + 1, str, current);
     }
 
     public static void combinationSum(int index, int target, List<Integer> ds, int[] arr, List<List<Integer>> answer) {
-        if(index>=arr.length) {
-            if(target == 0) {
+        if (index >= arr.length) {
+            if (target == 0) {
                 answer.add(new ArrayList<>(ds));
             }
             return;
         }
-        if(arr[index] <= target) {
+        if (arr[index] <= target) {
             ds.add(arr[index]);
             combinationSum(index, target - arr[index], ds, arr, answer);
             ds.remove(ds.size() - 1);
@@ -253,13 +253,28 @@ public class RecursionBasics {
         combinationSum(index, target, ds, arr, answer);
     }
 
+    public static void subsetSums(int index, int sum, int[] arr, List<Integer> sums) {
+        if (index >= arr.length) {
+            sums.add(sum);
+            return;
+        }
+
+        subsetSums(index + 1, sum + arr[index], arr, sums);
+
+        subsetSums(index + 1, sum, arr, sums);
+    }
+
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        int[] arr = {2, 3, 6, 7};
-        List<List<Integer>> answer = new ArrayList<>();
 
-        combinationSum(0, 7, new ArrayList<>(), arr, answer);
-        System.out.println(answer);
+        int[] arr = {3, 1, 2};
+        List<Integer> sums = new ArrayList<>();
+        subsetSums(0, 0, arr, sums);
+        System.out.println(sums);
+
+//        List<List<Integer>> answer = new ArrayList<>();
+//        combinationSum(0, 7, new ArrayList<>(), arr, answer);
+//        System.out.println(answer);
 
 
 //        stringSubsequences(0, "Vinay", "");
@@ -283,10 +298,8 @@ public class RecursionBasics {
 //        printOneToN(1, 5);
 
         long stopTime = System.currentTimeMillis();
-        System.out.println("Executed in :" +  (stopTime - startTime) + " ms");
+        System.out.println("Executed in :" + (stopTime - startTime) + " ms");
     }
-
-
 
 
 }
