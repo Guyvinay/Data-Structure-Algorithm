@@ -264,13 +264,31 @@ public class RecursionBasics {
         subsetSums(index + 1, sum, arr, sums);
     }
 
+    public static void getAllSubsets(int index, int [] arr, List<Integer> store, List<List<Integer>> ans) {
+
+        if(index >= arr.length) {
+            ans.add(new ArrayList<>(store));
+            return;
+        }
+        store.add(arr[index]);
+        getAllSubsets(index + 1, arr, store, ans);
+        store.remove(store.size() - 1);
+        getAllSubsets(index + 1, arr, store, ans);
+    }
+
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
         int[] arr = {3, 1, 2};
-        List<Integer> sums = new ArrayList<>();
-        subsetSums(0, 0, arr, sums);
-        System.out.println(sums);
+        List<List<Integer>> ans = new ArrayList<>();
+
+        getAllSubsets(0, arr, new ArrayList<>(), ans);
+
+        System.out.println(ans);
+
+//        List<Integer> sums = new ArrayList<>();
+//        subsetSums(0, 0, arr, sums);
+//        System.out.println(sums);
 
 //        List<List<Integer>> answer = new ArrayList<>();
 //        combinationSum(0, 7, new ArrayList<>(), arr, answer);
