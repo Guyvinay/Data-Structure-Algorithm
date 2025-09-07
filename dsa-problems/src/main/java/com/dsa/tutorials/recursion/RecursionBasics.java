@@ -1,7 +1,5 @@
 package com.dsa.tutorials.recursion;
 
-import org.w3c.dom.stylesheets.LinkStyle;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,11 +9,72 @@ import java.util.Map;
 
 public class RecursionBasics {
 
-//    public static void func() {
-//        System.out.println("func called");
-//        func();
-//    }
-    // Re 1
+    public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
+
+        int[] arr = {1, 2, 2};
+
+//        List<Integer> sums = new ArrayList<>();
+//        subsetSums(0, 0, arr, sums);
+//        System.out.println(sums);
+
+//        List<List<Integer>> answer = new ArrayList<>();
+//        combinationSum(0, 7, new ArrayList<>(), arr, answer);
+//        System.out.println(answer);
+
+
+//        stringSubsequences(0, "Vinay", "");
+//        System.out.println(generateSubSequencesOfSumKReturnCountOnly(0, arr, 0, 2));
+//        generateSubSequencesOfSumKOnlyFirst(0, arr, new ArrayList<>(), 0, 2);
+//        generateSubSequencesOfSumK(0, arr, new ArrayList<>(), 0, 2);
+//        List<List<Integer>> subsAns = new ArrayList<>();
+//        generateSubSequences(0, arr, new ArrayList<>(), subsAns);
+//        System.out.println(subsAns);
+//        System.out.println(fibonacciSequence(40));
+//        System.out.println(fibonacciWithMemorization(40, new HashMap<>()));
+
+//        System.out.println(isPalindrome(0,"MADAM"));
+//        int[] arr = {1, 2, 3, 4, 5 , 6};
+//        reverseArrayWithSingleVariable(arr, 0);
+//        reverseArray(arr, 0, arr.length - 1);
+//        System.out.println(factorialFunctional(5));
+//        factorialParametrized(5, 1);
+//        System.out.println(printSumOfNFunctional(5));
+//        printSumOfNParameterized(10, 0);
+//        printOneToNBack(5, 5);
+//        printNToOne(5, 5);
+//        printOneToN(1, 5);
+
+
+//        List<List<Integer>> ans = new ArrayList<>();
+//        getAllSubsets(0, arr, new ArrayList<>(), ans);
+//        System.out.println(ans);
+
+        List<List<Integer>> result = subsetsWithDup(arr);
+        System.out.println(result);
+
+        System.out.println("Executed in :" + (System.currentTimeMillis() - startTime) + " ms");
+    }
+
+    public static List<List<Integer>> subsetsWithDup(int[] nums) {
+//        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(nums, 0, new ArrayList<>(), result);
+        return result;
+    }
+
+    private static void backtrack(int[] nums, int index, List<Integer> current, List<List<Integer>> result) {
+        result.add(new ArrayList<>(current));
+
+        for (int i = index; i < nums.length; i++) {
+            // Skip duplicates
+            if (i > index && nums[i] == nums[i - 1]) continue;
+
+            current.add(nums[i]);
+            backtrack(nums, i + 1, current, result);
+            current.remove(current.size() - 1);
+        }
+    }
 
     /**
      *
@@ -153,16 +212,17 @@ public class RecursionBasics {
         return result;
     }
 
-    private static void generateSubSequences(int i, int[] arr, List<Integer> list) {
+    private static void generateSubSequences(int i, int[] arr, List<Integer> list, List<List<Integer>> subsAns) {
         if (i >= arr.length) {
-            System.out.println(list);
+//            System.out.println(list);
+            subsAns.add(new ArrayList<>(list));
             return;
         }
         list.add(arr[i]);
-        generateSubSequences(i + 1, arr, list);
+        generateSubSequences(i + 1, arr, list, subsAns);
 
         list.remove(list.size() - 1);
-        generateSubSequences(i + 1, arr, list);
+        generateSubSequences(i + 1, arr, list, subsAns);
     }
 
     private static void generateSubSequencesOfSumK(int i, int[] arr, List<Integer> list, int sum, int k) {
@@ -275,49 +335,5 @@ public class RecursionBasics {
         store.remove(store.size() - 1);
         getAllSubsets(index + 1, arr, store, ans);
     }
-
-    public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
-
-        int[] arr = {3, 1, 2};
-        List<List<Integer>> ans = new ArrayList<>();
-
-        getAllSubsets(0, arr, new ArrayList<>(), ans);
-
-        System.out.println(ans);
-
-//        List<Integer> sums = new ArrayList<>();
-//        subsetSums(0, 0, arr, sums);
-//        System.out.println(sums);
-
-//        List<List<Integer>> answer = new ArrayList<>();
-//        combinationSum(0, 7, new ArrayList<>(), arr, answer);
-//        System.out.println(answer);
-
-
-//        stringSubsequences(0, "Vinay", "");
-//        System.out.println(generateSubSequencesOfSumKReturnCountOnly(0, arr, 0, 2));
-//        generateSubSequencesOfSumKOnlyFirst(0, arr, new ArrayList<>(), 0, 2);
-//        generateSubSequencesOfSumK(0, arr, new ArrayList<>(), 0, 2);
-//        generateSubSequences(0, arr, new ArrayList<>());
-//        System.out.println(fibonacciSequence(40));
-//        System.out.println(fibonacciWithMemorization(40, new HashMap<>()));
-
-//        System.out.println(isPalindrome(0,"MADAM"));
-//        int[] arr = {1, 2, 3, 4, 5 , 6};
-//        reverseArrayWithSingleVariable(arr, 0);
-//        reverseArray(arr, 0, arr.length - 1);
-//        System.out.println(factorialFunctional(5));
-//        factorialParametrized(5, 1);
-//        System.out.println(printSumOfNFunctional(5));
-//        printSumOfNParameterized(10, 0);
-//        printOneToNBack(5, 5);
-//        printNToOne(5, 5);
-//        printOneToN(1, 5);
-
-        long stopTime = System.currentTimeMillis();
-        System.out.println("Executed in :" + (stopTime - startTime) + " ms");
-    }
-
 
 }
