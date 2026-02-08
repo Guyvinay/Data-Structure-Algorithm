@@ -22,7 +22,7 @@ public class RotateArr {
     private static void rotateArr2(int[] arr, int k) {
 
         rotate(arr, 0, k-1);
-        rotate(arr, k, arr.length - 1);
+            rotate(arr, k, arr.length - 1);
         rotate(arr, 0, arr.length - 1);
 
 
