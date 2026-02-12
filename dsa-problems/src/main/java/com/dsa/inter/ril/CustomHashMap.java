@@ -25,7 +25,7 @@ public class CustomHashMap<K, V> {
     private int capacity; // Current capacity before resizing the map
     private final float loadFactor; // load factor
 
-    private static final int DEFAULT_CAPACITY = 5;
+    private static final int DEFAULT_CAPACITY = 16;
     private static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
     public CustomHashMap() {
@@ -36,7 +36,8 @@ public class CustomHashMap<K, V> {
 
     private int findIndex(K key) {
         int hash = key == null ? 0 : key.hashCode();
-        return Math.abs(hash) % capacity;
+//        return Math.abs(hash) % capacity;
+        return hash & (capacity - 1);
     }
 
     public void put(K key, V val) {
