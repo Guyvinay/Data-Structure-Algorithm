@@ -19,10 +19,11 @@ public class CustomHashMap<K, V> {
             return key.toString();
         }
     }
-    private Node<K, V>[] table;
-    private int size;
-    private int capacity;
-    private final float loadFactor;
+
+    private Node<K, V>[] table; // actual table storing the array elements.
+    private int size; // Actual size of the map
+    private int capacity; // Current capacity before resizing the map
+    private final float loadFactor; // load factor
 
     private static final int DEFAULT_CAPACITY = 5;
     private static final float DEFAULT_LOAD_FACTOR = 0.75f;
@@ -30,7 +31,7 @@ public class CustomHashMap<K, V> {
     public CustomHashMap() {
         this.loadFactor = DEFAULT_LOAD_FACTOR;
         this.capacity = DEFAULT_CAPACITY;
-        this.table = new Node[this.capacity];
+        this.table = new Node[this.capacity]; 
     }
 
     private int findIndex(K key) {
@@ -39,7 +40,7 @@ public class CustomHashMap<K, V> {
     }
 
     public void put(K key, V val) {
-        if (size >= capacity * loadFactor) {
+        if (size >= capacity * loadFactor) { // make sure if load factor is exceeding then resize the table to grow dynamically
             resizeMap();
         }
         int index = findIndex(key);
@@ -86,7 +87,7 @@ public class CustomHashMap<K, V> {
     }
 
     public int size() {
-        return size;
+        return this.size;
     }
 
 }
