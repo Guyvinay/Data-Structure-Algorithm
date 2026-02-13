@@ -21,7 +21,8 @@ public class HasCycle {
         // Head of list
         ListNode head = n1;
 
-        System.out.println(hasCycle(head));
+//        System.out.println(hasCycle(head));
+        System.out.println(detectCycle(head));
     }
 
     private static boolean hasCycle(ListNode node) {
@@ -33,5 +34,26 @@ public class HasCycle {
             if (fast == slow) return true;
         }
         return false;
+    }
+
+    private static ListNode detectCycle(ListNode node) {
+        ListNode slow = node;
+        ListNode fast = node;
+        boolean hasCycle = false;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == slow) hasCycle = true;
+        }
+
+        if (!hasCycle) return null;
+
+        slow = node;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
     }
 }
