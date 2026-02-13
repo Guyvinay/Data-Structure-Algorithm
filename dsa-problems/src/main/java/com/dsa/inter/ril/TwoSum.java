@@ -13,8 +13,9 @@ public class TwoSum {
     private static int[] twoSums(int[] arr, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i=0; i<arr.length; i++) {
-            if(map.containsKey(k-arr[i])) {
-                return new int[]{i, map.get(k-arr[i])};
+            int check = k - arr[i];
+            if(map.containsKey(check)) {
+                return new int[]{i, map.get(check)};
             }
             map.put(arr[i], i);
         }
