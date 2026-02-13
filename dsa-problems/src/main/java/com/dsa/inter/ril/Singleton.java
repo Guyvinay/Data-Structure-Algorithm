@@ -2,7 +2,7 @@ package com.dsa.inter.ril;
 
 public class Singleton {
 
-    private static volatile Singleton instance;
+    private static volatile Singleton instance; // volatile make sure the visibility of instance to latest.
 
     public static synchronized Singleton getInstance() {
 
