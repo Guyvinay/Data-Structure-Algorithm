@@ -1,0 +1,19 @@
+package com.dsa.inter.ril;
+
+public class Singleton {
+
+    private static volatile Singleton instance;
+
+    public static synchronized Singleton getInstance() {
+
+        if (instance == null) {     // 1st check
+            synchronized (Singleton.class) {
+                if (instance == null) { // 2nd check
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+
+}
