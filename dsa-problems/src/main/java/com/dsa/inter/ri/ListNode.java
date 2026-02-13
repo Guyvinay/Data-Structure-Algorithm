@@ -1,4 +1,4 @@
-package com.dsa.inter.ril;
+package com.dsa.inter.ri;
 
 public class ListNode {
     int val;

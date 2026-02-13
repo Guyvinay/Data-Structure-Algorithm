@@ -1,4 +1,4 @@
-package com.dsa.inter.ril;
+package com.dsa.inter.ri;
 
 import java.util.Arrays;
 import java.util.HashMap;
