@@ -1,4 +1,4 @@
-package com.dsa.inter.ri;
+package com.dsa.inte.ri;
 
 import java.util.Objects;
 
@@ -37,7 +37,7 @@ public class CustomHashMap<K, V> {
     private int findIndex(K key) {
         int hash = key == null ? 0 : key.hashCode();
 //        return Math.abs(hash) % capacity;
-        return hash & (capacity - 1);
+        return hash & (capacity - 1); // this works best for capacity is 2 to the power 2 ** n.
     }
 
     public void put(K key, V val) {

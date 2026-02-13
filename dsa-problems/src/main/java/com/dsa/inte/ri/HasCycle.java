@@ -1,4 +1,4 @@
-package com.dsa.inter.ri;
+package com.dsa.inte.ri;
 
 public class HasCycle {
     public static void main(String[] args) {
