@@ -1,4 +1,4 @@
-package com.dsa.inte.ri.tree;
+package com.dsa.interview.rel.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;

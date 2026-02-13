@@ -1,4 +1,4 @@
-package com.dsa.inte.ri;
+package com.dsa.interview.rel;
 
 import java.util.Arrays;
 

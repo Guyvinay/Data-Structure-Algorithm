@@ -1,4 +1,4 @@
-package com.dsa.inte.ri;
+package com.dsa.interview.rel;
 
 public class ListNode {
     int val;
